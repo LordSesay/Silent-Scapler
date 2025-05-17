@@ -1,115 +1,117 @@
-# SILENT SCALPER 🚀
-> An Event-Driven, Serverless File Processing Pipeline on AWS
+# SERVERLESS DEVOPS PIPELINE 🚀  
+> CI/CD for Serverless Applications Using GitHub Actions, AWS Lambda & Terraform
 
 ![AWS](https://img.shields.io/badge/Built%20With-AWS-orange?style=for-the-badge&logo=amazonaws)
-![Serverless](https://img.shields.io/badge/Architecture-Serverless-blueviolet?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-In%20Progress-success?style=for-the-badge)
+![CI/CD](https://img.shields.io/badge/CI/CD-GitHub%20Actions-blueviolet?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
 ---
 
 ## 📌 What Problem Are We Solving?
 
-Modern industries face challenges such as:
+Serverless applications often suffer from:
 
-- **Wasted compute** due to idle servers
-- **Outages and slowdowns** during traffic spikes
-- **Data loss or inefficiencies** due to tight coupling and outdated batch processes
-- **High operational costs** with minimal flexibility
+- **Manual deployment processes** lacking automation
+- **Configuration drift** without infrastructure-as-code
+- **No visibility** into build → deploy stages
+- **Difficulty in maintaining consistency across environments**
 
-**Silent Scalper** addresses these problems with a fully serverless, real-time, and scalable pipeline designed to process incoming files without manual intervention or server management.
+**Serverless DevOps Pipeline** addresses these issues by combining GitHub Actions, Terraform, and AWS services into a secure, automated CI/CD pipeline for Lambda-based applications.
 
 ---
 
 ## 🎯 Project Goals
 
-- Eliminate idle resource cost using event-driven compute
-- Build a resilient system that handles unpredictable file uploads
-- Enable secure and compliant data processing (e.g., HIPAA for healthcare)
-- Provide visibility and alerting across all stages of the pipeline
-- Offer optional external access with identity control
+- Deploy AWS Lambda functions automatically via CI/CD
+- Use GitHub Actions to handle build, test, and deploy stages
+- Define infrastructure using Terraform for reproducibility
+- Ensure consistency, security, and scalability in a fully serverless environment
 
 ---
 
 ## ⚙️ Tech Stack
 
-| Service            | Role                                                         |
-|--------------------|--------------------------------------------------------------|
-| **Amazon S3**      | Upload trigger for new files                                 |
-| **AWS Lambda**     | Stateless event processing, transformation, and validation   |
-| **Amazon DynamoDB**| NoSQL storage for parsed metadata                            |
-| **Amazon CloudWatch**| Logging, alerting, custom metrics                        |
-| **Amazon API Gateway**| Optional secure upload endpoint for external partners  |
-| **IAM & KMS**      | Role-based access and encryption                             |
-| **Amazon SNS**     | Optional failure alerts and decoupling                       |
+| Tool/Service           | Role                                                      |
+|------------------------|-----------------------------------------------------------|
+| **AWS Lambda**         | Serverless compute for business logic                     |
+| **API Gateway**        | HTTP interface for Lambda functions                       |
+| **GitHub Actions**     | CI/CD pipeline to build and deploy serverless apps        |
+| **Terraform**          | Provision Lambda, API Gateway, IAM roles, etc.            |
+| **Amazon S3**          | (Optional) For storing build artifacts or frontend code   |
+| **IAM**                | Secure access and permission control                      |
 
 ---
 
 ## 🔁 How It Works
 
-1. **File Upload to S3**
-2. **S3 triggers Lambda Function**
-3. **Lambda validates/transforms data**
-4. **Metadata stored in DynamoDB**
-5. **CloudWatch logs and tracks performance**
-6. **SNS/Email alerts on error or slow processing**
-7. **Optional API Gateway access for clinics or partners**
+1. **Code pushed to GitHub** triggers GitHub Actions
+2. **GitHub Actions** builds and packages Lambda function
+3. **Terraform** applies infrastructure (Lambda + API Gateway)
+4. **Deployment artifacts** (ZIP or config) are uploaded to S3 (if used)
+5. **Lambda endpoint** is updated and ready to serve traffic
 
 ---
 
 ## 🧩 Architecture Diagram
 
-*(Diagram goes here — saved in /assets)*
+*(Diagram goes here — saved in /assets/serverless-devops-pipeline.png)*
 
 ---
 
 ## 🛠 Folder Structure
 
 ```
+serverless-devops-pipeline/
 ├── lambda/
-│   └── processFile.js
+│ └── handler.py
 ├── terraform/
-│   └── main.tf
+│ ├── main.tf
+│ ├── lambda.tf
+│ ├── iam.tf
+│ └── api_gateway.tf
+├── .github/
+│ └── workflows/
+│ └── ci-cd.yml
 ├── assets/
-│   └── silent-scalper-architecture.png
+│ └── serverless-devops-pipeline.png
 ├── README.md
 └── .gitignore
 ```
-
 ---
 
 ## 💼 Business Use Case
 
-A medical imaging provider needs to allow remote clinics to upload patient scans.  
-The data must be validated, logged, and stored with encryption.  
-Silent Scalper automates this process in real time — scaling securely without infrastructure overhead.
+A startup wants to ship new features rapidly without managing servers.  
+By combining GitHub Actions and AWS Lambda, this pipeline automates deployments with no manual steps, enabling faster releases and more developer focus.
 
 ---
 
 ## 📈 Business Value
 
-- **Scalability:** Lambda scales automatically with demand.
-- **Cost Efficiency:** Pay only for what you use (no idle EC2 instances).
-- **Resilience:** CloudWatch + SNS for observability and alerts.
-- **Security:** IAM + API Gateway + KMS ensures HIPAA-readiness.
-- **Speed to Market:** Deploy infrastructure in minutes via IaC.
+- **Rapid Releases:** Code → production in minutes
+- **Low Cost:** No idle compute or persistent infrastructure
+- **Security:** IAM-based access control and CI secrets
+- **Consistency:** All infra and logic defined in Git and Terraform
+- **Developer Velocity:** One-click deployment workflow via GitHub
 
 ---
 
 ## 🔮 Future Enhancements
 
-- [ ] Integrate with Terraform for full IaC deployments
-- [ ] Add CI/CD pipeline (CodePipeline + CodeBuild)
-- [ ] Integrate Amazon Athena for metadata queries
-- [ ] Enhance audit logging via CloudTrail
+- [ ] Add staging/production environment separation
+- [ ] Integrate with CodeQL or SonarCloud for security scanning
+- [ ] Add automated API tests post-deployment
+- [ ] Monitor Lambda metrics in CloudWatch
 
 ---
 
 ## 🤝 Connect
 
-Crafted by **[Malcolm Sesay](https://www.linkedin.com/in/malcolmsesay/)** — Let’s innovate together in the cloud.
+Built by **[Malcolm Sesay](https://www.linkedin.com/in/malcolmsesay/)** — Championing clean DevOps with cloud-native tools.
 
 ---
 
 ## 🏷️ Tags
 
-`#AWS` `#Serverless` `#DevOps` `#CloudEngineering` `#RealTimeData` `#DynamoDB` `#Lambda` `#InfrastructureAsCode`
+`#AWS` `#Serverless` `#DevOps` `#Terraform` `#Lambda` `#GitHubActions` `#CI/CD` `#Automation` `#CloudEngineering` `#InfrastructureAsCode`
+
