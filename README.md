@@ -65,7 +65,6 @@ Modern industries face challenges such as:
 ## 🛠 Folder Structure
 
 ```
-.
 ├── lambda/
 │   └── processFile.js
 ├── terraform/
